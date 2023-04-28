@@ -1,0 +1,26 @@
+{
+	"uvitacore": [
+		"uvitacore_edge2+edge3(request)",
+		"uvitacore_loop2(request)",
+		"uvitacore_mibody_extrude(request)",
+		"uvitacore_pipespine(api)",
+		"uvitacore_pipespine(raw)",
+		"uvitacore_pipespine(request)",
+		"uvitacore_textstring(api)"
+	],
+	"uaibuilding": [
+		"uaibuilding_beam(request)",
+		"uaibuilding_ceilingofcontour(request)",
+		"uaibuilding_columnofcontour(request)",
+		"uaibuilding_roofofcontour(request)",
+		"uaibuilding_room(request)",
+		"uaibuilding_wallofcenterline(api)"
+	],
+	"uaicmhandrail": [
+		"uaicmhandrail_cmhandrail(request)"
+	],
+	"uaicmstaircase": [
+		"uaicmstaircase_cmstaircase(api)",
+		"uaicmstaircase_cmstaircase(request)"
+	]
+}

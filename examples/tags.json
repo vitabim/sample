@@ -1,0 +1,8 @@
+{
+	"uvitacore_pipespine(api)": ["pipe"],
+	"uvitacore_pipespine(request)": ["pipe"],
+	"uvitacore_textstring(api)": ["text"],
+	"uaibuilding_wallofcenterline(api)": ["wall"],
+	"uaicmstaircase_cmstaircase(api)": ["staircase"],
+	"uaicmstaircase_cmstaircase(request)": ["staircase"]
+}

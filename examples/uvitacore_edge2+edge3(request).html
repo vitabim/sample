@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>2D/3D Edge示例</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="shortcut icon" href="../files/logo.png" media="(prefers-color-scheme: light)" />
+
+    <script type='text/javascript' src='../build/three.min.js'></script>
+    <script type='text/javascript' src='./js/controls/OrbitControls.js'></script>
+    <script type='text/javascript' src='./js/lines/LineSegments2.js'></script>
+    <script type='text/javascript' src='./js/lines/Line2.js'></script>
+    <script type='text/javascript' src='./js/lines/LineSegmentsGeometry.js'></script>
+    <script type='text/javascript' src='./js/lines/LineGeometry.js'></script>
+    <script type='text/javascript' src='./js/lines/LineMaterial.js'></script>
+    <script type='text/javascript' src='./js/loaders/FontLoader.js'></script>
+    <script type='text/javascript' src='./js/geometries/TextGeometry.js'></script>
+
+    <script type='text/javascript' src='https://proto.zhuxingyun.com/buildmin/uvitafw.min.js'></script>
+    <script type='text/javascript' src='https://proto.zhuxingyun.com/buildmin/uvitacore.min.js'></script>
+    <script type='text/javascript' src='https://proto.zhuxingyun.com/buildmin/uvitagr.min.js'></script>
+
+</head>
+
+<body>
+<script type="module">
+
+    let camera, controls, scene, renderer;
+
+    init();
+
+    animate();
+
+    test();
+
+    function init() {
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xcccccc);
+
+        renderer = new THREE.WebGLRenderer({antialias: true});
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.set(400, 200, 0);
+
+        // controls
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+        controls.dampingFactor = 0.05;
+        controls.minDistance = 100;
+        controls.maxDistance = 50000;
+        // controls.maxPolarAngle = Math.PI / 2;
+
+        // lights
+        const dirLight1 = new THREE.DirectionalLight(0xffffff);
+        dirLight1.position.set(1, 1, 1);
+        scene.add(dirLight1);
+
+        const dirLight2 = new THREE.DirectionalLight(0x002288);
+        dirLight2.position.set(-1, -1, -1);
+        scene.add(dirLight2);
+
+        const ambientLight = new THREE.AmbientLight(0x222222);
+        scene.add(ambientLight);
+
+        window.addEventListener('resize', onWindowResize);
+    }
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        render();
+    }
+
+    function render() {
+        renderer.render(scene, camera);
+    }
+
+    function test() {
+        const space = UVita.Util.getAssistantSpace();
+        const sketch = UVita.Util.getAssistantSketch();
+
+        let pt1 = new UVita.Vector2(0, 0);
+        let pt2 = new UVita.Vector2(100, 100);
+        let curve = new UVita.CurveOfLineSeg2(pt1, pt2);
+        let req = new UVita.ReqCreateSketchEdgeOfCurve({
+            sketch,
+            pt1,
+            pt2,
+            curve,
+            cls: UVita.Edge2
+        });
+        req.execute();
+
+
+        pt1 = new UVita.Vector3(0, 0, 100);
+        pt2 = new UVita.Vector3(100, 100, 200);
+        curve = new UVita.CurveOfLineSeg3(pt1, pt2);
+        req = new UVita.ReqCreateSketchEdgeOfCurve({
+            sketch,
+            pt1,
+            pt2,
+            curve,
+            cls: UVita.Edge3
+        });
+        req.execute();
+
+
+        const group = new THREE.Group;
+        space.grCreateGraphics(group);
+
+        console.log(req.entity);
+
+        scene.add(group);
+    }
+
+</script>
+
+</body>
+</html>

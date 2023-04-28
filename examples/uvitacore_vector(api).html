@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>向量示例</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+    <link rel="shortcut icon" href="../files/logo.png" media="(prefers-color-scheme: light)" />
+
+    <script type='text/javascript' src='https://proto.zhuxingyun.com/buildmin/uvitafw.min.js'></script>
+    <script type='text/javascript' src='https://proto.zhuxingyun.com/buildmin/uvitacore.min.js'></script>
+</head>
+
+<body>
+<script>
+    debugger;
+
+    const v1 = new UVita.Vector2(0, 1);
+    const v2 = new UVita.Vector2(1, 1);
+    const vAdd = v1.clone().add(v2);
+    console.log('v1 + v2', v1, v2, vAdd);
+
+    const vSub = v1.clone().sub(v2);
+    console.log('v1 - v2', v1, v2, vSub);
+
+</script>
+</body>
+
+</html>
