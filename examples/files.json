@@ -22,5 +22,8 @@
 	"uaicmstaircase": [
 		"uaicmstaircase_cmstaircase(api)",
 		"uaicmstaircase_cmstaircase(request)"
+	],
+	"uaitag": [
+		"uaitag_tag(request)"
 	]
 }

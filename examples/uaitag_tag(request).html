@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>MIBody示例</title>
+    <title>标签示例</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="shortcut icon" href="../files/logo.png" media="(prefers-color-scheme: light)"/>
@@ -18,8 +18,8 @@
 
     <script type='text/javascript' src='https://proto.zhuxingyun.com/buildmin/uvitafw.min.js'></script>
     <script type='text/javascript' src='https://proto.zhuxingyun.com/buildmin/uvitacore.min.js'></script>
+    <script type='text/javascript' src='https://proto.zhuxingyun.com/buildmin/uaitag.min.js'></script>
     <script type='text/javascript' src='https://proto.zhuxingyun.com/buildmin/uvitagr.min.js'></script>
-
 </head>
 
 <body>
@@ -85,31 +85,51 @@
     }
 
     function test() {
-        const space = UVita.Util.getAssistantSpace();
-        const region = UVita.Util.getAssistantSketch();
+        const context = {fontPath: './fonts/FangSong_GB2312_Regular.typeface.json'};
+        const fontMgr = UVita.FWFontMgr.getInstance();
+        fontMgr.setContext(context);
 
-        const pts = [
-            new UVita.Vector3(0, 0, 0),
-            new UVita.Vector3(100, 0, 0),
-            new UVita.Vector3(100, 300, 0)
-        ];
-        const req = new UVita.ReqCreateSketchLoop({
-            region,
-            cls: UVita.Loop3,
-            isOpen: false,
-            pts
+        fontMgr.loadFonts(() => {
+
+            const space = UVita.Util.getAssistantSpace();
+            const sketch = UVita.Util.getAssistantSketch();
+
+            const pts = [
+                new UVita.Vector3(0, 0, 0),
+                new UVita.Vector3(100, 0, 0),
+                new UVita.Vector3(200, 200, 0)
+            ];
+            const param = {
+                text: 'Hello\n你好',
+                textColor: 0x75f2f9,
+                textHeight: 12,
+                textThickness: 1,
+                parkWidth: 100,
+                parkHeight: 50,
+                parkOpacity: 0.5,
+                parkFilledColor: 0x112535,
+                parkColor: 0x245063,
+                parkAngleColor: 0x75f2f9,
+                leadColor: 0x245063,
+                leadHeadColor: 0x75F2f9
+            };
+
+            const req = new UVita.ReqCreateTag({
+                region: sketch,
+                object: null,
+                pts,
+                param
+            });
+            req.execute();
+
+            const group = new THREE.Group;
+            space.grCreateGraphics(group);
+
+            console.log(req.entity);
+
+            scene.add(group);
+
         });
-        req.execute();
-
-        const miBody = UVita.MIBody.createMIBodyOfExtrude(region, req.entity, new UVita.Vector3(0, 0, 300));
-        region.addItem(miBody);
-
-        const group = new THREE.Group;
-        space.grCreateGraphics(group);
-
-        console.log(req.entity);
-
-        scene.add(group);
     }
 
 </script>
