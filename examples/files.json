@@ -16,6 +16,9 @@
 		"uaibuilding_room(request)",
 		"uaibuilding_wallofcenterline(api)"
 	],
+	"uaicmceiling": [
+		"uaicmceiling_cmceilingofcontour(request)"
+	],
 	"uaicmhandrail": [
 		"uaicmhandrail_cmhandrail(request)"
 	],
