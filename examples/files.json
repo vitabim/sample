@@ -23,6 +23,9 @@
 		"uaicmstaircase_cmstaircase(api)",
 		"uaicmstaircase_cmstaircase(request)"
 	],
+	"uailocalrender": [
+		"uailocalrender_effectofsmoke(raw)"
+	],
 	"uaitag": [
 		"uaitag_tag(request)"
 	]
