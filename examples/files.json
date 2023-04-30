@@ -25,6 +25,7 @@
 		"uaicmhandrail_cmhandrail(request)"
 	],
 	"uaicmstaircase": [
+		"uaicmstaircase_cmramp(request)",
 		"uaicmstaircase_cmstaircase(api)",
 		"uaicmstaircase_cmstaircase(request)"
 	],
