@@ -6,6 +6,7 @@
 		"uvitacore_pipespine(api)",
 		"uvitacore_pipespine(raw)",
 		"uvitacore_pipespine(request)",
+		"uvitacore_pipehanger(request)",
 		"uvitacore_textstring(api)"
 	],
 	"uaibuilding": [
