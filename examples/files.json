@@ -3,10 +3,11 @@
 		"uvitacore_edge2+edge3(request)",
 		"uvitacore_loop2(request)",
 		"uvitacore_mibody_extrude(request)",
+		"uvitacore_pipeconnector(request)",
+		"uvitacore_pipehanger(request)",
 		"uvitacore_pipespine(api)",
 		"uvitacore_pipespine(raw)",
 		"uvitacore_pipespine(request)",
-		"uvitacore_pipehanger(request)",
 		"uvitacore_textstring(api)"
 	],
 	"uaibuilding": [
