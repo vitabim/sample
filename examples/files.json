@@ -8,6 +8,7 @@
 		"uvitacore_pipespine(api)",
 		"uvitacore_pipespine(raw)",
 		"uvitacore_pipespine(request)",
+		"uvitacore_space_load(raw)",
 		"uvitacore_textstring(api)"
 	],
 	"uaibuilding": [
